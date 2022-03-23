@@ -22,6 +22,10 @@
     position: relative;
 }
 
+.table .table__row {
+    cursor: pointer;
+}
+
 .table-error {
     position: absolute;
     top: 50%;

@@ -71,6 +71,7 @@ export const Stations: FC<IStationsProps> = ({ stations, error }) => {
           height={TABLE_HEIGHT}
           loading={!error && !tableData}
           locale={{ emptyMessage: error ? "" : "No data found" }}
+          rowClassName={styles['table__row']}
           data={tableData}
           sortColumn={sortColumn}
           sortType={sortType}
