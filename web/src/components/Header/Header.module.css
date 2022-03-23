@@ -1,0 +1,10 @@
+.header {
+    padding: 1rem 0;
+    margin: auto;
+}
+
+.title {
+    margin: 1rem auto;
+    text-align: center;
+    color: var(--color-main);
+}
