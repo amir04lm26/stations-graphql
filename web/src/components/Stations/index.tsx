@@ -11,7 +11,7 @@ import {
 import { get } from "lodash";
 
 import ErrorMessage from "components/ErrorMessage";
-import { stationRows } from "./Stations.utils";
+import { stationRows } from "utils/stations";
 import { IStationsProps } from "./Stations.model";
 
 import styles from "./Stations.module.css";
@@ -62,7 +62,9 @@ export const Stations: FC<IStationsProps> = ({ stations, error }) => {
 
   return (
     <section className={styles["table-container"]}>
-      <h2 className={styles["table-title"]}>Stations List</h2>
+      <header>
+        <h2 className={styles["table-title"]}>Stations List</h2>
+      </header>
 
       <div className={styles["table"]}>
         <Table

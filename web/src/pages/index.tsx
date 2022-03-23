@@ -8,7 +8,7 @@ import { errorToString } from "utils/error";
 import { IStations, IStationsObject } from "models/station";
 import { ErrorType } from "models/error";
 
-import styles from "styles/Home.module.css";
+import styles from "styles/theme.module.css";
 
 export type Stations = IStations | null;
 export interface IHomeProps {
@@ -20,9 +20,9 @@ const Home: NextPage<IHomeProps> = ({ stations, error }) => {
   return (
     <>
       <Header
-        title='Welcome to Station Manager'
-        pageTitle='Station Manager'
-        pageDescription='Station Manager Platform'
+        title='Welcome to Stations Manager'
+        pageTitle='Stations Manager'
+        pageDescription='Stations Manager Platform'
       />
 
       <div className={styles.container}>

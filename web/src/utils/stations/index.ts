@@ -1,4 +1,4 @@
-import { StationRows } from "./Stations.model";
+import { StationRows } from "models/station";
 
 export const stationRows: StationRows = [
   {
