@@ -1,0 +1,30 @@
+.table-container {
+    max-width: 100%;
+    width: 600px;
+}
+
+.table-title::after {
+    content: ':';
+}
+
+@media only screen and (max-width: 768px) {
+    .table-title {
+        text-align: center;
+        text-decoration: underline;
+    }
+    
+    .table-title::after{
+        content: '';
+    }
+}
+
+.table {
+    position: relative;
+}
+
+.table-error {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

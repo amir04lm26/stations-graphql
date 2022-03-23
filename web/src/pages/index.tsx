@@ -3,13 +3,14 @@ import type { GetServerSideProps, NextPage } from "next";
 import client from "apollo";
 import { GET_STATIONS } from "apollo/queries";
 import Header from "components/Header";
+import Stations from "components/Stations";
+import { errorToString } from "utils/error";
 import { IStations, IStationsObject } from "models/station";
+import { ErrorType } from "models/error";
 
 import styles from "styles/Home.module.css";
-import { errorToString } from "utils/error";
 
 export type Stations = IStations | null;
-export type ErrorType = string | null;
 export interface IHomeProps {
   stations: Stations;
   error: ErrorType;
@@ -26,8 +27,7 @@ const Home: NextPage<IHomeProps> = ({ stations, error }) => {
 
       <div className={styles.container}>
         <main className={styles.main}>
-          {JSON.stringify(stations)}
-          {error && <p data-testid='error'>{errorToString(error)}</p>}
+          <Stations stations={stations} error={error} />
         </main>
       </div>
     </>
@@ -39,6 +39,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     error: ErrorType = null;
 
   try {
+    // throw ""; // ! uncomment this to see the UI in case of any error
     const res = await client.query<IStationsObject>({
       query: GET_STATIONS,
     });

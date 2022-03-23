@@ -1,3 +1,4 @@
+import 'rsuite-table/dist/css/rsuite-table.css';
 import "styles/globalStyles.css";
 
 import type { AppProps } from "next/app";
