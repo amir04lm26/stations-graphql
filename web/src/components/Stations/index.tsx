@@ -11,9 +11,12 @@ import {
 import { get } from "lodash";
 
 import ErrorMessage from "components/ErrorMessage";
+import { stationRows } from "./Stations.utils";
 import { IStationsProps } from "./Stations.model";
 
 import styles from "./Stations.module.css";
+
+const TABLE_HEIGHT = 400;
 
 export const Stations: FC<IStationsProps> = ({ stations, error }) => {
   const [sortColumn, setSortColumn] = useState<string>();
@@ -63,7 +66,7 @@ export const Stations: FC<IStationsProps> = ({ stations, error }) => {
 
       <div className={styles["table"]}>
         <Table
-          height={400}
+          height={TABLE_HEIGHT}
           loading={!error && !tableData}
           locale={{ emptyMessage: error ? "" : "No data found" }}
           data={tableData}
@@ -72,30 +75,20 @@ export const Stations: FC<IStationsProps> = ({ stations, error }) => {
           onSortColumn={handleSortColumn}
           shouldUpdateScroll={false}
           onRowClick={handleViewStation}>
-          <Column width={50} fixed resizable align='center'>
-            <HeaderCell>ID</HeaderCell>
-            <Cell dataKey='id' />
-          </Column>
-
-          <Column width={180} sortable resizable align='center'>
-            <HeaderCell>Name</HeaderCell>
-            <Cell dataKey='name' />
-          </Column>
-
-          <Column width={120} sortable resizable align='center'>
-            <HeaderCell>Volume</HeaderCell>
-            <Cell dataKey='metrics.volume' />
-          </Column>
-
-          <Column width={120} sortable resizable align='center'>
-            <HeaderCell>Margin</HeaderCell>
-            <Cell dataKey='metrics.margin' />
-          </Column>
-
-          <Column width={120} sortable resizable align='center'>
-            <HeaderCell>Profit</HeaderCell>
-            <Cell dataKey='metrics.profit' />
-          </Column>
+          {stationRows.map(
+            ({ width, fixed, resizable, sortable, align, title, dataKey }) => (
+              <Column
+                key={dataKey}
+                width={width}
+                fixed={fixed}
+                resizable={resizable}
+                sortable={sortable}
+                align={align}>
+                <HeaderCell>{title}</HeaderCell>
+                <Cell dataKey={dataKey} />
+              </Column>
+            )
+          )}
         </Table>
 
         <ErrorMessage message={error} className={styles["table-error"]} />
