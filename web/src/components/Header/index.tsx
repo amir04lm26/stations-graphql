@@ -19,7 +19,9 @@ const Header: FC<IHeaderProps> = ({ title, pageTitle, pageDescription }) => {
       </Head>
 
       <header className={styles.header}>
-        <h1 className={styles.title}>{title}</h1>
+        <h1 data-testid='title' className={styles.title}>
+          {title}
+        </h1>
       </header>
     </>
   );
